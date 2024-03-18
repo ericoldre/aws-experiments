@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "lockfileVersion": 2,
+  "requires": true,
+  "description": "",
+  "main": "server.js",
+  "packages": {},
+  "scripts": {
+    "build": "echo 'Building...'",
+    "start": "node ./node_modules/pm2/bin/pm2 start ./server.js --name hello_aws --log ../.tmp/logs/app.log ",
+    "stop": "node ./node_modules/pm2/bin/pm2 stop hello_aws"
+  },
+  "dependencies": {
+    "pm2": "^5.3.1"
+  }
+}
