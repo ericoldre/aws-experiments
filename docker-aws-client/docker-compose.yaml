@@ -1,0 +1,27 @@
+version: '3.1'
+name: aws-client
+services:
+  
+  awsclient:
+    image: docker-aws-client:latest
+    build: ./
+    container_name: aws-client
+    tty: true
+    stdin_open: true
+    environment:
+     - _AWS_ACCESS_KEY_ID=use environment.env
+     - _AWS_SECRET_ACCESS_KEY=use environment.env
+     - _AWS_DEFAULT_REGION=use environment.env
+    env_file:
+      - ../.secrets/environment.env
+    ports:
+     - "8080-8080:8080-8080"  
+    volumes:
+      - ./../.tmp/root:/root # store in .tmp dir of solution   
+      - ./compose-scripts/:/compose-scripts/   
+secrets:
+  AWS_SECRET_ACCESS_KEY:
+    file: ../.secrets/asdf
+volumes:
+  volume1:
+    name: volume1
